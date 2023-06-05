@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main_div">
+            <div>
+                <h1>
+                    TIC-TAC-TOE
+                </h1>
+            </div>
+    
+            <div class="play">
+
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="one"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="two"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="three"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="four"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="five"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="six"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="seven"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="eight"></button></div>
+                <div class="cell"><button onclick="entry(this)" class="wrapper" id="nine"></button></div>
+    
+            </div>
+    
+            <div class="turn">
+                <p id="turn"></p>
+            </div>
+
+            <button onclick="reset()" id="reset" >
+                RESET
+            </button>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+    
+</body>
+</html>
