@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="top_wrapper">
+
+        <h1 >To-Do App</h1>
+
+        <div class="gen_inp">
+            <input  class="inp_tsk to_do" type="text" id="to_do" placeholder="Add a Task..">
+            <button id="add_btn" onclick="createDiv()" class="add_btn dlt_btn"><i class="fa fa-plus" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+            </button>
+        </div>
+        <div id="wrapper" class="wrapper" style="display: none;">
+            <div id="div1" class="wrapper-child scale-element fade-element">
+                <div id="inp1" class="inp">
+                    <input onchange="strikethrough(this)" class="chkbox yoo"  
+                    type="checkbox">
+                    <input class="inside_inp" type="text">
+ 
+                    <button  onclick="dltDiv(this)" class="dlt_btn">
+                        <i style="color: red; font-weight: 100; font-size:20px" class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
