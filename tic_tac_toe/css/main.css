@@ -77,3 +77,6 @@ button{
   cursor: pointer;
 
 }
+.inp_tsk:invalid {
+    border: 2px solid red;
+}

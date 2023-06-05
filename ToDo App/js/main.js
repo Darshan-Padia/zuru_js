@@ -12,7 +12,7 @@ function myFunction(x) {
         add_btn.innerHTML = '<i class="fa fa-plus" style="font-size:20px;color:rgb(255, 255, 255)"></i>'
         document.body.style.backgroundColor = "cadetblue";
         document.body.style.backgroundColor = "orange";
-    
+
     }
 }
 
@@ -86,6 +86,7 @@ function strikethrough(ele) {
 
     localStorage.setItem('chkboxArray', JSON.stringify(chkboxArray));
 }
+
 function loadPreviousTasks() {
     var taskList = JSON.parse(localStorage.getItem('task_list'));
     chkboxArray = []
@@ -102,21 +103,30 @@ function loadPreviousTasks() {
                 var arr = document.getElementsByClassName('inside_inp');
                 var to_do = document.getElementsByClassName('to_do');
                 var element = arr[(Number(wrap.id.slice(3)) - 1)];
+                // element.innerHTML = task;
                 element.value = task;
+
                 wrap.setAttribute('id', 'div' + (Number(wrap.id.slice(3)) + 1));
 
                 var clone = wrap;
-                chkboxArray.push({ id: clone.id, stat: false });
+                chkboxArray.push({
+                    id: clone.id,
+                    stat: false
+                });
             } else {
                 var clone = existingDiv.cloneNode(true);
                 clone.style.visibility = 'visible';
                 clone.setAttribute('id', 'div' + (Number(wrap.id.slice(3)) + 1));
                 wrapper.appendChild(clone);
-                chkboxArray.push({ id: clone.id, stat: false });
+                chkboxArray.push({
+                    id: clone.id,
+                    stat: false
+                });
 
                 var arr = document.getElementsByClassName('inside_inp');
                 var to_do = document.getElementsByClassName('to_do');
                 var element = arr[(Number(wrap.id.slice(3)) - 1)];
+                // element.innerHTML = task;
                 element.value = task;
             }
 
@@ -139,9 +149,18 @@ function loadPreviousTasks() {
 }
 
 function createDiv() {
-    count++;
-    duplicateDiv();
-    input.value = ""
+    // var input = document.getElementById("to_do");
+
+    if (input.value === "") {
+        alert("Input cannot be empty!");
+        input.style.border = '3px solid red'
+        return;
+    } else {
+        input.style.border = 'none'
+        count++;
+        duplicateDiv();
+        input.value = ""
+    }
 }
 
 function dltDiv(el) {
@@ -159,6 +178,7 @@ function dltDiv(el) {
             wrapper_elements[0].style.display = 'none';
             // toBeRemoved.style.transition = 'all .3s'
         }, 300);
+
         // wrapper_elements[0].style.display = 'none';
         wrapper_child_elements[0].setAttribute('id', 'div' + 1);
     } else {
@@ -171,7 +191,9 @@ function dltDiv(el) {
     }
 
     var task_details = parent_ele.children[1];
+    // var index = task_list.indexOf(task_details.innerHTML);
     var index = task_list.indexOf(task_details.value);
+
 
     if (index > -1) {
         task_list.splice(index, 1);
@@ -185,15 +207,22 @@ function dltDiv(el) {
 function duplicateDiv() {
     var existingDiv = document.querySelector(".wrapper-child:last-child");
     var wrap = document.querySelector(".wrapper-child:last-child");
-
+    var wrapper_child_elements = document.getElementsByClassName('wrapper-child');
+    var toBeRemoved = wrapper_child_elements[0]
+    toBeRemoved.classList.remove("scale-out");
     if (Number(wrap.id.slice(3)) == 1) {
         wrap.parentElement.style.display = 'block';
         var particular_inside_input = document.querySelector('#' + wrap.id + ' .inside_inp');
         var element = particular_inside_input;
+        // element.innerHTML = document.getElementById('to_do').value;
         element.value = document.getElementById('to_do').value;
+
         wrap.setAttribute('id', 'div' + (Number(wrap.id.slice(3)) + 1));
         var clone = wrap;
-        chkboxArray.push({ id: clone.id, stat: false });
+        chkboxArray.push({
+            id: clone.id,
+            stat: false
+        });
         var particular_chkbox = document.querySelector('#' + clone.id + ' .chkbox');
         particular_chkbox.checked = false;
         strikethrough(particular_chkbox);
@@ -206,11 +235,16 @@ function duplicateDiv() {
         var particular_inside_input = document.querySelector('#' + clone.id + ' .inside_inp');
         var particular_chkbox = document.querySelector('#' + clone.id + ' .chkbox');
         // console.log(particular_chkbox);
-        chkboxArray.push({ id: clone.id, stat: false });
+        chkboxArray.push({
+            id: clone.id,
+            stat: false
+        });
         particular_chkbox.checked = false;
         strikethrough(particular_chkbox);
         var element = particular_inside_input;
+        // element.innerHTML = document.getElementById('to_do').value;
         element.value = document.getElementById('to_do').value;
+
     }
 
     // console.log(lastChild);
@@ -220,4 +254,3 @@ function duplicateDiv() {
     localStorage.setItem('task_list', JSON.stringify(task_list));
     localStorage.setItem('chkboxArray', JSON.stringify(chkboxArray));
 }
-
