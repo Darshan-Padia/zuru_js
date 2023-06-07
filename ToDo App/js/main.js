@@ -267,7 +267,8 @@ function myFunc() {
         console.log(val);
         let new_val = event.target.value;
         console.log(new_val);
-        let arr_ = JSON.parse(localStorage.getItem('task_list'));
+        if (JSON.parse(localStorage.getItem('task_list'))) {
+            let arr_ = JSON.parse(localStorage.getItem('task_list'));
 
             for (let i = 0; i < arr_.length; i++) {
                 const element = arr_[i];
@@ -278,6 +279,20 @@ function myFunc() {
             }
             arr_[ind] = new_val;
             localStorage.setItem('task_list', JSON.stringify(arr_));
+        }else{
+            // let arr_ = JSON.parse(localStorage.getItem('task_list'));
+
+            for (let i = 0; i < task_list.length; i++) {
+                const element = task_list[i];
+                if(element == val){
+                    ind = i;
+                    break;
+                }
+            }
+            arr_[ind] = new_val;
+            localStorage.setItem('task_list', JSON.stringify(task_list));
+        }
+       
         
     });
     
