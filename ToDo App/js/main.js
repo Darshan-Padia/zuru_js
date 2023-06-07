@@ -254,3 +254,32 @@ function duplicateDiv() {
     localStorage.setItem('task_list', JSON.stringify(task_list));
     localStorage.setItem('chkboxArray', JSON.stringify(chkboxArray));
 }
+
+let ind=-1;
+let val_;
+function myFunc() {
+    
+    event.target.addEventListener("keydown", function (event) {       
+             val_ = event.target.value;
+    });
+    event.target.addEventListener("keyup", function (event) {
+        let val = val_
+        console.log(val);
+        let new_val = event.target.value;
+        console.log(new_val);
+        let arr_ = JSON.parse(localStorage.getItem('task_list'));
+
+            for (let i = 0; i < arr_.length; i++) {
+                const element = arr_[i];
+                if(element == val){
+                    ind = i;
+                    break;
+                }
+            }
+            arr_[ind] = new_val;
+            localStorage.setItem('task_list', JSON.stringify(arr_));
+        
+    });
+    
+
+}   
