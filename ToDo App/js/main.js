@@ -19,7 +19,8 @@ function myFunction(x) {
 var x = window.matchMedia("(max-width: 500px)")
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction) // Attach listener function on state changes
-
+let ind=-1;
+let val_;
 
 var wrapper = document.getElementById("wrapper");
 let count = 0;
@@ -255,8 +256,7 @@ function duplicateDiv() {
     localStorage.setItem('chkboxArray', JSON.stringify(chkboxArray));
 }
 
-let ind=-1;
-let val_;
+
 function myFunc() {
     
     event.target.addEventListener("keydown", function (event) {       
